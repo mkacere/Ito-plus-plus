@@ -9,7 +9,7 @@ add_library(ito_engine INTERFACE)
 # Public headers live in ./include
 target_include_directories(ito_engine
     INTERFACE
-        ${CMAKE_CURRENT_SOURCE_DIR}/Ito++/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # Require modern C++

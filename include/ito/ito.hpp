@@ -5,3 +5,4 @@
 #include "model/black_scholes_model.hpp"
 #include "option/european_option.hpp"
 #include "utils/utils.hpp"
+#include "utils/math.hpp"

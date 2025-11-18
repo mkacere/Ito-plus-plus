@@ -1,11 +1,21 @@
-# Simple demo (repeate patern for others added!!!!)
-add_executable(ito_demo main.cpp "main.cpp")
-target_link_libraries(ito_demo PRIVATE ito_engine)
+# Helper function to add demo executables
+function(add_ito_demo DEMO_NAME)
+    # Create executable from <name>_demo.cpp
+    add_executable(ito_demo_${DEMO_NAME} ${DEMO_NAME}_demo.cpp)
+    
+    # Link to the header-only library
+    target_link_libraries(ito_demo_${DEMO_NAME} PRIVATE ito_engine)
+    
+    # Optional: Set output directory for organized binaries
+    set_target_properties(ito_demo_${DEMO_NAME} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    )
+endfunction()
 
-# math demo
-add_executable(ito_demo_math math_demo.cpp "math_demo.cpp")
-target_link_libraries(ito_demo_math PRIVATE ito_engine)
-
-# Black Scholes demo
-add_executable(ito_demo_black_scholes black_scholes_demo.cpp "black_scholes_demo.cpp")
-target_link_libraries(ito_demo_black_scholes PRIVATE ito_engine)
+# Add all demos (one line each!)
+add_ito_demo(main)              # main_demo.cpp
+add_ito_demo(math)              # math_demo.cpp
+add_ito_demo(black_scholes)     # black_scholes_demo.cpp
+add_ito_demo(gbm_sim)           # gbm_sim_demo.cpp
+add_ito_demo(montecarlo)        # montecarlo_demo.cpp
+add_ito_demo(montecarlo_BM)
